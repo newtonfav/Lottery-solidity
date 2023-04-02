@@ -2,19 +2,18 @@
 const fs = require('fs');
 const solc = require('solc');
 
-// const inboxPath = path.resolve(__dirname, 'contracts', 'Inbox.sol');
 const source = fs
-  .readFileSync(`${__dirname}/contracts/Inbox.sol`, 'utf8')
+  .readFileSync(`${__dirname}/contracts/Lottery.sol`, 'utf8')
   .toString();
 
 input = {
   language: 'Solidity',
-  sources: { 'Inbox.sol': { content: source } },
+  sources: { 'Lottery.sol': { content: source } },
   settings: { outputSelection: { '*': { '*': ['*'] } } },
 };
 const comp = JSON.parse(solc.compile(JSON.stringify(input, 1))).contracts[
-  'Inbox.sol'
-].Inbox;
+  'Lottery.sol'
+].Lottery;
 
 // console.log(comp.evm.bytecode);
 module.exports = comp;
